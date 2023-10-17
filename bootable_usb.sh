@@ -15,6 +15,7 @@ fi
 ### clean and format
 #sudo umount /dev/sdb
 sudo dd if=/dev/zero of=$USB bs=1M count=10
+# sudo parted $USB mklabel msdos # usa esta linea si tu disco no soporta GPT y esta en legacy mbr
 sudo parted $USB mklabel gpt
 sudo parted -s -a optimal $USB mkpart primary fat32 2048s 100%
 sleep 2
